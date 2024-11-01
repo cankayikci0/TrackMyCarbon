@@ -6,6 +6,7 @@ class Manager {
   async addUser(userData) {
     try {
       await firestore.collection('users').doc(userId).set(userData);
+      
       console.log('User added successfully!');
     } catch (error) {
       console.error("Error adding user: ", error);
@@ -86,20 +87,23 @@ class Manager {
     }
   }
 
-  // Zorluklar Ekleme
-  async getChallenges(challengeData) {
+
+  async getChallenges() {
     try {
       const challengeTitles = []; // Boş bir dizi oluşturuyoruz
-
+  
       for (const challenge of challenges) {
-      challengeTitles.push(challenge.title);
-      return challengeTitles
+        // Her bir challenge için iç dizi oluştur
+        challengeTitles.push([challenge.title, challenge.points, challenge.carbonReduction]);
       }
+  
       console.log('Challenges added successfully!');
+      return challengeTitles;
     } catch (error) {
       console.error("Error adding challenges: ", error);
     }
   }
+  
 
   // Liderlik Tablosuna Kullanıcı Ekleme
   async addLeaderboardEntry(userId, starValue) {
