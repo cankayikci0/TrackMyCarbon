@@ -7,6 +7,8 @@ import LoginPage from "./src/screens/LoginScreen";
 import RegisterPage from "./src/screens/RegisterScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import FactsScreen from "./src/screens/FactsScreen";
+import ProfileScreen from "./src/screens/ProfileScreen";
+import ChallengesScreen from "./src/screens/ChallengesScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -33,6 +35,16 @@ export default function App() {
           name="Facts"
           component={FactsScreen}
           options={{ title: "Facts" }}
+        />
+        <Stack.Screen
+          name="ProfileScreen"
+          component={ProfileScreen}
+          options={{ title: "ProfileScreen" }}
+        />
+        <Stack.Screen
+          name="ChallengesScreen"
+          component={ChallengesScreen}
+          options={{ title: "ChallengesScreen" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
