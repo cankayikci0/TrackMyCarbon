@@ -17,7 +17,11 @@ const Navbar = () => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.navbarSub}
+<<<<<<< HEAD
+        onPress={() => navigation.navigate("RecommendationScreen")}
+=======
         onPress={() => navigation.navigate("InitialCreation")}
+>>>>>>> main
       >
         <Ionicons name="cloud-outline" size={24} color="white" />
         <Text style={styles.navbarText}>Facts</Text>

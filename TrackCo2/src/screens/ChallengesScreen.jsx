@@ -13,7 +13,7 @@ const ChallengesScreen = () => {
             {challenges.map((challenge, index) => (
                 <TouchableOpacity key={index} style={styles.challengeContainer} onPress={() => handlePress(challenge)}>
                     <Image
-                        source={{ uri: 'https://example.com/your-image.png' }} // Replace with a valid image URL
+                        source={{ uri: `../assets/icons/${challenge.subtitle}.png` }} 
                         style={styles.image}
                     />
                     <View style={styles.textContainer}>
