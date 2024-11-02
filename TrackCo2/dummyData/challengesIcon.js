@@ -1,196 +1,106 @@
 const iconPrompts = [
-    {
-        title: "Turn off lights when leaving a room",
-        prompt: "An icon depicting a person exiting a room with a closed light bulb, symbolizing energy saving."
-    },
-    {
-        title: "Unplug devices when not in use",
-        prompt: "An icon showing an electric plug being removed from a socket, illustrating reduced energy consumption."
-    },
-    {
-        title: "Use public transport once a week",
-        prompt: "An icon of a bus or train with a person, representing the use of public transportation."
-    },
-    {
-        title: "Carpool to work or school",
-        prompt: "An icon of a car with multiple people inside, indicating ride-sharing and reduced vehicle use."
-    },
-    {
-        title: "Go meatless one day a week",
-        prompt: "An icon showing a plate with vegetables and a 'no meat' symbol, promoting a plant-based meal."
-    },
-    {
-        title: "Reduce shower time by 2 minutes",
-        prompt: "An icon depicting a shower head with a timer, encouraging shorter showers."
-    },
-    {
-        title: "Switch to LED lights",
-        prompt: "An icon of an LED light bulb with an energy saving symbol."
-    },
-    {
-        title: "Use reusable shopping bags",
-        prompt: "An icon of a shopping bag with the 'no plastic' symbol, emphasizing sustainability."
-    },
-    {
-        title: "Wash clothes in cold water",
-        prompt: "An icon of a washing machine with a cold water symbol, promoting energy-efficient laundry."
-    },
-    {
-        title: "Limit heating/air conditioning use",
-        prompt: "An icon showing a thermostat with a downward arrow, indicating reduced energy usage."
-    },
-    {
-        title: "Buy local produce",
-        prompt: "An icon of a farmer's market with local produce, highlighting support for local farming."
-    },
-    {
-        title: "Opt for digital receipts",
-        prompt: "An icon showing a smartphone displaying a digital receipt, reducing paper waste."
-    },
-    {
-        title: "Avoid single-use plastics",
-        prompt: "An icon depicting a crossed-out plastic bottle, symbolizing the reduction of plastic waste."
-    },
-    {
-        title: "Conduct a home energy audit",
-        prompt: "An icon showing a house with a magnifying glass, representing energy efficiency assessment."
-    },
-    {
-        title: "Lower your thermostat in winter",
-        prompt: "An icon of a thermostat with a snowflake, indicating lower temperature settings in winter."
-    },
-    {
-        title: "Dry clothes on a clothesline",
-        prompt: "An icon of a clothesline with hanging clothes, promoting air drying for energy savings."
-    },
-    {
-        title: "Bike instead of drive for short trips",
-        prompt: "An icon of a bicycle, symbolizing choosing cycling over driving for short distances."
-    },
-    {
-        title: "Plant a tree or shrub",
-        prompt: "An icon depicting a person planting a tree, contributing to environmental sustainability."
-    },
-    {
-        title: "Cook with a lid on pots and pans",
-        prompt: "An icon showing a pot with a lid, promoting energy-efficient cooking."
-    },
-    {
-        title: "Switch to a low-flow showerhead",
-        prompt: "An icon of a low-flow showerhead, highlighting water conservation."
-    },
-    {
-        title: "Use reusable water bottles",
-        prompt: "An icon of a reusable water bottle with a 'no plastic' symbol."
-    },
-    {
-        title: "Reduce paper towel usage",
-        prompt: "An icon of a cloth towel next to a paper towel, promoting reusable alternatives."
-    },
-    {
-        title: "Compost food scraps",
-        prompt: "An icon of a compost bin with food scraps, encouraging organic waste recycling."
-    },
-    {
-        title: "Bring your own coffee mug",
-        prompt: "An icon of a reusable coffee mug with a 'no disposable' symbol."
-    },
-    {
-        title: "Take shorter showers",
-        prompt: "An icon depicting a person in a shower with a timer, promoting water conservation."
-    },
-    {
-        title: "Buy products with minimal packaging",
-        prompt: "An icon of a product with minimal packaging, emphasizing waste reduction."
-    },
-    {
-        title: "Replace air filters in HVAC systems",
-        prompt: "An icon of an air filter being replaced, promoting HVAC efficiency."
-    },
-    {
-        title: "Use rechargeable batteries",
-        prompt: "An icon of rechargeable batteries with a recycling symbol."
-    },
-    {
-        title: "Telecommute when possible",
-        prompt: "An icon showing a person working from home, reducing commuting emissions."
-    },
-    {
-        title: "Buy energy-efficient appliances",
-        prompt: "An icon of an energy-efficient appliance with a green energy symbol."
-    },
-    {
-        title: "Recycle electronics properly",
-        prompt: "An icon depicting electronic devices with a recycling symbol."
-    },
-    {
-        title: "Use public bike-sharing systems",
-        prompt: "An icon showing a bike with a shared symbol, encouraging bike-sharing."
-    },
-    {
-        title: "Share books instead of buying new",
-        prompt: "An icon depicting two people exchanging books, promoting sharing and sustainability."
-    },
-    {
-        title: "Donate old clothes",
-        prompt: "An icon of a clothing donation box, encouraging recycling of textiles."
-    },
-    {
-        title: "Avoid fast fashion",
-        prompt: "An icon showing a sustainable fashion symbol with a crossed-out fast fashion logo."
-    },
-    {
-        title: "Use cloth napkins instead of paper",
-        prompt: "An icon of a cloth napkin next to a paper napkin, promoting reusability."
-    },
-    {
-        title: "Grow your own herbs or vegetables",
-        prompt: "An icon depicting a garden with herbs and vegetables, promoting home gardening."
-    },
-    {
-        title: "Avoid products with palm oil",
-        prompt: "An icon of a palm tree with a 'no palm oil' symbol, supporting sustainable choices."
-    },
-    {
-        title: "Support renewable energy",
-        prompt: "An icon depicting a solar panel and wind turbine, symbolizing green energy."
-    },
-    {
-        title: "Use a broom instead of a vacuum",
-        prompt: "An icon of a broom with a vacuum cleaner crossed out, promoting energy-saving cleaning methods."
-    },
-    {
-        title: "Limit screen time",
-        prompt: "An icon depicting a person with a timer next to a screen, encouraging reduced electronic use."
-    }
+    { subtitle: "turnofflight", prompt: "An icon depicting a person exiting a room with a closed light bulb, symbolizing energy saving.", url: null },
+    { subtitle: "unplugdevice", prompt: "An icon showing an electric plug being removed from a socket, illustrating reduced energy consumption.", url: null },
+    { subtitle: "publictransport", prompt: "An icon of a bus or train with a person, representing the use of public transportation.", url: null },
+    { subtitle: "carpool", prompt: "An icon of a car with multiple people inside, indicating ride-sharing and reduced vehicle use.", url: null },
+    { subtitle: "meatlessday", prompt: "An icon showing a plate with vegetables and a 'no meat' symbol, promoting a plant-based meal.", url: null },
+    { subtitle: "shortenshower", prompt: "An icon depicting a shower head with a timer, encouraging shorter showers.", url: null },
+    { subtitle: "ledlights", prompt: "An icon of an LED light bulb with an energy-saving symbol.", url: null },
+    { subtitle: "reusablebags", prompt: "An icon of a shopping bag with the 'no plastic' symbol, emphasizing sustainability.", url: null },
+    { subtitle: "coldwaterwash", prompt: "An icon of a washing machine with a cold water symbol, promoting energy-efficient laundry.", url: null },
+    { subtitle: "limithvac", prompt: "An icon showing a thermostat with a downward arrow, indicating reduced energy usage.", url: null },
+    { subtitle: "localproduce", prompt: "An icon of a farmer's market with local produce, highlighting support for local farming.", url: null },
+    { subtitle: "digitalreceipts", prompt: "An icon showing a smartphone displaying a digital receipt, reducing paper waste.", url: null },
+    { subtitle: "singleuseplastics", prompt: "An icon depicting a crossed-out plastic bottle, symbolizing the reduction of plastic waste.", url: null },
+    { subtitle: "energyaudit", prompt: "An icon showing a house with a magnifying glass, representing energy efficiency assessment.", url: null },
+    { subtitle: "lowerthermostat", prompt: "An icon of a thermostat with a snowflake, indicating lower temperature settings in winter.", url: null },
+    { subtitle: "clothesline", prompt: "An icon of a clothesline with hanging clothes, promoting air drying for energy savings.", url: null },
+    { subtitle: "biketoinstead", prompt: "An icon of a bicycle, symbolizing choosing cycling over driving for short distances.", url: null },
+    { subtitle: "plantatree", prompt: "An icon depicting a person planting a tree, contributing to environmental sustainability.", url: null },
+    { subtitle: "cookwithlid", prompt: "An icon showing a pot with a lid, promoting energy-efficient cooking.", url: null },
+    { subtitle: "lowflowshower", prompt: "An icon of a low-flow showerhead, highlighting water conservation.", url: null },
+    { subtitle: "reusablebottle", prompt: "An icon of a reusable water bottle with a 'no plastic' symbol.", url: null },
+    { subtitle: "reducepapertowel", prompt: "An icon of a cloth towel next to a paper towel, promoting less paper usage.", url: null },
+    { subtitle: "compost", prompt: "An icon of a compost bin with organic waste, encouraging composting efforts.", url: null },
+    { subtitle: "reusablemug", prompt: "An icon of a coffee mug with a heart, symbolizing eco-friendly habits.", url: null },
+    { subtitle: "shortershower", prompt: "An icon depicting a timer with a showerhead, emphasizing quick showers.", url: null },
+    { subtitle: "minimalpackaging", prompt: "An icon of a package with minimal waste, promoting sustainable shopping.", url: null },
+    { subtitle: "replacehvacfilter", prompt: "An icon showing an air filter being replaced, indicating maintenance for efficiency.", url: null },
+    { subtitle: "rechargeablebattery", prompt: "An icon of rechargeable batteries, promoting eco-friendly energy use.", url: null },
+    { subtitle: "telecommute", prompt: "An icon of a person working on a laptop at home, indicating remote work.", url: null },
+    { subtitle: "energyefficientappliances", prompt: "An icon of energy-efficient appliances with a star rating.", url: null },
+    { subtitle: "recycleelectronics", prompt: "An icon of electronic waste being recycled, promoting proper disposal.", url: null },
+    { subtitle: "bikesharing", prompt: "An icon of a bicycle with a sharing symbol, indicating shared cycling initiatives.", url: null },
+    { subtitle: "sharebooks", prompt: "An icon of a stack of books with an arrow, symbolizing sharing literature.", url: null },
+    { subtitle: "donateclothes", prompt: "An icon of clothes with a donation box, promoting clothing donations.", url: null },
+    { subtitle: "avoidfastfashion", prompt: "An icon of a crossed-out shopping bag, symbolizing sustainable fashion choices.", url: null },
+    { subtitle: "clothnapkins", prompt: "An icon of cloth napkins on a table, promoting reusable dining products.", url: null },
+    { subtitle: "growyourown", prompt: "An icon of a person tending to a garden, emphasizing self-sustainability.", url: null },
+    { subtitle: "avoidpalmoil", prompt: "An icon of a palm tree with a cross, promoting palm oil avoidance.", url: null },
+    { subtitle: "renewableenergy", prompt: "An icon of a solar panel with a sun, promoting clean energy sources.", url: null },
+    { subtitle: "usebroom", prompt: "An icon of a broom, emphasizing manual cleaning over electric tools.", url: null },
+    { subtitle: "limitscreentime", prompt: "An icon showing a clock and a smartphone, promoting less screen time.", url: null },
 ];
 
-// Example of how to send prompts to DALL-E
-const axios = require('axios'); // Axios'u yükleyin (npm install axios)
 
-const apiKey = 'YOUR_API_KEY'; // Buraya DALL-E API anahtarınızı koyun.
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
 
-const createIcon = async (prompt) => {
+const apiKey = 'test';
+
+
+// Assets klasörü yolu
+const assetsPath = path.join(__dirname, '../src/assets/icons');
+
+// İkonları indirme fonksiyonu
+const downloadIconToAssets = async (icon) => {
     try {
         const response = await axios.post('https://api.openai.com/v1/images/generations', {
-            prompt: prompt,
+            prompt: icon.prompt,
             n: 1,
-            size: '1024x1024' // İstenilen boyut
+            size: '512x512'
         }, {
             headers: {
                 'Authorization': `Bearer ${apiKey}`,
                 'Content-Type': 'application/json'
             }
         });
+
         const imageUrl = response.data.data[0].url;
-        console.log('Icon created:', imageUrl);
+
+        // assetsPath klasörünü oluşturun (yoksa)
+        if (!fs.existsSync(assetsPath)){
+            fs.mkdirSync(assetsPath, { recursive: true });
+        }
+        
+        const imagePath = path.join(assetsPath, `${icon.subtitle}.png`);
+
+        // Görseli indir ve kaydet
+        const imageResponse = await axios({
+            url: imageUrl,
+            responseType: 'stream',
+        });
+        
+        await new Promise((resolve, reject) => {
+            const writer = fs.createWriteStream(imagePath);
+            imageResponse.data.pipe(writer);
+            writer.on('finish', resolve);
+            writer.on('error', reject);
+        });
+
+        console.log(`Icon saved to assets: ${imagePath}`);
     } catch (error) {
-        console.error('Error creating icon:', error);
+        console.error(`Error downloading icon for ${icon.subtitle}:`, error.message);
     }
 };
 
-// Örnek ikon yaratma çağrısı
-iconPrompts.forEach(icon => {
-    console.log(`Creating icon for: ${icon.title}`);
-    createIcon(icon.prompt);
-});
+// Tüm ikonları indirme işlemi
+const downloadAllIcons = async () => {
+    for (const icon of iconPrompts) {
+        await downloadIconToAssets(icon);
+    }
+};
+
+// Başlat
+downloadAllIcons();

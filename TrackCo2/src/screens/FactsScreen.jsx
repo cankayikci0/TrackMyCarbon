@@ -3,13 +3,11 @@ import { View, Text, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Layout from "../components/Layout";
 
-const HomeScreen = () => {
+const RecommendationScreen = () => {
   return (
     <Layout>
       <View style={styles.container}>
-        <Text style={styles.title}>Daily Emissions</Text>
-
-        <Text style={styles.subtitle}>Recommended Challenges</Text>
+        <Text style={styles.title}>Recommended Challenges</Text>
         <View style={styles.challenges}>
           <Text style={styles.challengeText}>
             1. Carpool instead of driving by yourself
@@ -74,4 +72,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default RecommendationScreen;
