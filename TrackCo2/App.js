@@ -29,9 +29,9 @@ export default function App() {
           options={{ title: "Register" }}
         />
         <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ title: "Home" }}
+          name="RecommendationScreen"
+          component={RecommendationScreen}
+          options={{ title: "RecommendationScreen" }}
         />
         <Stack.Screen
           name="InitialCreation"

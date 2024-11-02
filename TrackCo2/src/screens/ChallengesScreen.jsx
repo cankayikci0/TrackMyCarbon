@@ -24,7 +24,7 @@ const ChallengesScreen = () => {
           onPress={() => handlePress(challenge)}
         >
           <Image
-            source={{ uri: "https://example.com/your-image.png" }}
+            source={{ uri: `../assets/icons/${challenge.subtitle}.png` }}
             style={styles.image}
           />
           <View style={styles.textContainer}>
