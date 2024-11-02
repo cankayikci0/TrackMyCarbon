@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   TouchableWithoutFeedback,
   Keyboard,
@@ -9,6 +9,7 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Animated,
 } from "react-native";
 import { Text, TextInput, Button, Snackbar } from "react-native-paper";
 import { images } from "../constants";
@@ -20,6 +21,7 @@ const RegisterScreen = ({ navigation }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorVisible, setErrorVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const rotateValue = useRef(new Animated.Value(0)).current;
 
   const handleRegister = () => {
     if (password !== confirmPassword) {
@@ -30,8 +32,23 @@ const RegisterScreen = ({ navigation }) => {
     console.log("Register clicked", { email, password, confirmPassword });
     // Add registration logic here
 
-    navigation.navigate("Home");
+    navigation.navigate("InitialCreation");
   };
+
+  useEffect(() => {
+    Animated.loop(
+      Animated.timing(rotateValue, {
+        toValue: 1,
+        duration: 2000,
+        useNativeDriver: true,
+      })
+    ).start();
+  }, [rotateValue]);
+
+  const rotateInterpolate = rotateValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: ["0deg", "360deg"],
+  });
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
@@ -39,11 +56,17 @@ const RegisterScreen = ({ navigation }) => {
         <KeyboardAvoidingView
           style={styles.avoidingView}
           behavior={Platform.OS === "ios" ? "padding" : "height"}
-          keyboardVerticalOffset={100} // Adjust this value based on your layout
+          keyboardVerticalOffset={100}
         >
           <ScrollView contentContainerStyle={styles.scrollContainer}>
             <View style={styles.content}>
-              <Text style={styles.title}>Track My Carbon</Text>
+              <Animated.Image
+                style={[
+                  styles.logo,
+                  { transform: [{ rotate: rotateInterpolate }] },
+                ]}
+                source={images.AppLogo}
+              />
               <Text style={styles.subtitle}>Create an account</Text>
               <TextInput
                 label="Name"
@@ -117,28 +140,27 @@ const styles = StyleSheet.create({
     backgroundPosition: "center",
   },
   avoidingView: {
-    flex: 1, // Ensure it takes the full height of the screen
+    flex: 1,
   },
   scrollContainer: {
-    flexGrow: 1, // Allow ScrollView to expand
-    justifyContent: "center", // Keep content centered vertically
-    paddingBottom: 20, // Add some padding at the bottom
+    flexGrow: 1,
+    justifyContent: "center",
+    paddingBottom: 20,
   },
   content: {
     backgroundColor: "rgba(256,256,256,0.8)",
     padding: 20,
-    borderRadius: 10, // Optional: Add rounded corners for better aesthetics
+    borderRadius: 10,
   },
-  title: {
-    fontSize: 28,
-    fontWeight: "bold",
-    textAlign: "center",
-    color: "#5d868e",
-    marginBottom: 10,
+  logo: {
+    width: 100,
+    height: 100,
+    alignSelf: "center",
+    marginBottom: 20,
   },
   subtitle: {
     fontSize: 16,
-    color: "#84baae",
+    color: "#5d868e",
     textAlign: "center",
     marginBottom: 30,
   },

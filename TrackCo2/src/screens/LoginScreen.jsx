@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   TouchableWithoutFeedback,
   Keyboard,
@@ -6,6 +6,8 @@ import {
   StyleSheet,
   View,
   ImageBackground,
+  Image,
+  Animated,
 } from "react-native";
 import { Text, TextInput, Button } from "react-native-paper";
 
@@ -14,20 +16,41 @@ import { images } from "../constants";
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const rotateValue = useRef(new Animated.Value(0)).current;
 
   const handleLogin = () => {
-    navigation.navigate("Home");
+    navigation.navigate("InitialCreation");
     console.log("Login clicked", { email, password });
   };
+
+  useEffect(() => {
+    Animated.loop(
+      Animated.timing(rotateValue, {
+        toValue: 1,
+        duration: 2000,
+        useNativeDriver: true,
+      })
+    ).start();
+  }, [rotateValue]);
+
+  const rotateInterpolate = rotateValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: ["0deg", "360deg"],
+  });
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <ImageBackground source={images.LoginBackground} style={styles.container}>
         <View style={styles.container}>
           <View style={styles.content}>
-            <Text style={styles.title}>Track My Carbon</Text>
+            <Animated.Image
+              style={[
+                styles.logo,
+                { transform: [{ rotate: rotateInterpolate }] },
+              ]}
+              source={images.AppLogo}
+            />
             <Text style={styles.subtitle}>Log in to continue</Text>
-
             <TextInput
               label="Email"
               value={email}
@@ -43,7 +66,6 @@ const LoginScreen = ({ navigation }) => {
               style={styles.input}
               theme={{ colors: { primary: "#4caf50" } }}
             />
-
             <Button
               mode="contained"
               onPress={handleLogin}
@@ -52,7 +74,6 @@ const LoginScreen = ({ navigation }) => {
             >
               Login
             </Button>
-
             <TouchableOpacity onPress={() => navigation.navigate("Register")}>
               <Text style={styles.routerText}>
                 Don't have an account?{" "}
@@ -78,16 +99,15 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(256,256,256,0.8)",
     padding: 20,
   },
-  title: {
-    fontSize: 28,
-    fontWeight: "bold",
-    textAlign: "center",
-    color: "#5d868e",
-    marginBottom: 10,
+  logo: {
+    width: 100,
+    height: 100,
+    alignSelf: "center",
+    marginBottom: 20,
   },
   subtitle: {
     fontSize: 16,
-    color: "#84baae",
+    color: "#5d868e",
     textAlign: "center",
     marginBottom: 30,
   },

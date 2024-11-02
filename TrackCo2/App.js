@@ -6,6 +6,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginPage from "./src/screens/LoginScreen";
 import RegisterPage from "./src/screens/RegisterScreen";
 import HomeScreen from "./src/screens/HomeScreen";
+import InitialCreationScreen from "./src/screens/InitialCreationScreen";
+import ChallengeScreen from "./src/screens/ChallengeScreen";
+import LeaderboardScreen from "./src/screens/LeaderboardScreen";
+import ProfileScreen from "./src/screens/ProfileScreen";
 import FactsScreen from "./src/screens/FactsScreen";
 import ProfileScreen from "./src/screens/ProfileScreen";
 import ChallengesScreen from "./src/screens/ChallengesScreen";
@@ -32,9 +36,24 @@ export default function App() {
           options={{ title: "RecommendationScreen" }}
         />
         <Stack.Screen
-          name="Facts"
-          component={FactsScreen}
-          options={{ title: "Facts" }}
+          name="InitialCreation"
+          component={InitialCreationScreen}
+          options={{ title: "InitialCreation" }}
+        />
+        <Stack.Screen
+          name="Challenge"
+          component={ChallengeScreen}
+          options={{ title: "Challenge" }}
+        />
+        <Stack.Screen
+          name="Leaderboard"
+          component={LeaderboardScreen}
+          options={{ title: "Leaderboard" }}
+        />
+        <Stack.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{ title: "Profile" }}
         />
         <Stack.Screen
           name="ProfileScreen"
