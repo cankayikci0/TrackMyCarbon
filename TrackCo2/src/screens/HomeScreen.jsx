@@ -1,8 +1,8 @@
 import Layout from "../components/Layout";
-import React, { useState, useEffect } from 'react';
-import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
+import React, { useState, useEffect } from "react";
+import { View, Text, Image, StyleSheet, Dimensions } from "react-native";
 
-const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
+const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
 
 const TreeWithLeavesAndAnimation = () => {
   const [leaves, setLeaves] = useState([]);
@@ -14,7 +14,8 @@ const TreeWithLeavesAndAnimation = () => {
 
     const minHeight = treeHeight / 2;
     const maxHeight = treeHeight - leafRadius * 2;
-    const randomHeight = Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
+    const randomHeight =
+      Math.floor(Math.random() * (maxHeight - minHeight + 1)) + minHeight;
     const randomOffset = Math.floor(Math.random() * 141) - 70;
 
     const newLeaf = {
@@ -43,11 +44,14 @@ const TreeWithLeavesAndAnimation = () => {
   return (
     <Layout>
       <View style={styles.container}>
-        <Image source={require('../assets/tree.png')} style={styles.treeImage} />
-        {leaves.map(leaf => (
+        <Image
+          source={require("../assets/tree.png")}
+          style={styles.treeImage}
+        />
+        {leaves.map((leaf) => (
           <Image
             key={leaf.id}
-            source={require('../assets/leaf.png')}
+            source={require("../assets/leaf.png")}
             style={[styles.leaf, { top: leaf.top, left: leaf.left }]}
           />
         ))}
@@ -64,22 +68,18 @@ const TreeWithLeavesAndAnimation = () => {
           <Text style={styles.breakdownText}>Transportation: 15%</Text>
           <Text style={styles.breakdownText}>Diet: 9%</Text>
         </View>
-        <Text style={styles.subtitle}>Recommended Challenges</Text>
-        <View style={styles.challenges}>
-          <Text style={styles.challengeText}>
-            1. Carpool instead of driving by yourself
-          </Text>
-          <Text style={styles.challengeText}>2. Go vegan today</Text>
-        </View>
 
         {/* Coin ve Star bölümü */}
         <View style={styles.topRightContainer}>
           <View style={styles.iconContainer}>
-            <Image source={require('../assets/coin.png')} style={[styles.icon, { transform: [{ rotate: '90deg' }] }]} />
+            <Image
+              source={require("../assets/coin.png")}
+              style={[styles.icon, { transform: [{ rotate: "90deg" }] }]}
+            />
             <Text style={styles.iconText}>100</Text>
           </View>
           <View style={styles.iconContainer}>
-            <Image source={require('../assets/star.png')} style={styles.icon} />
+            <Image source={require("../assets/star.png")} style={styles.icon} />
             <Text style={styles.iconText}>5</Text>
           </View>
         </View>
@@ -104,8 +104,8 @@ const styles = StyleSheet.create({
   leaf: {
     width: 30,
     height: 30,
-    position: 'absolute',
-    resizeMode: 'contain',
+    position: "absolute",
+    resizeMode: "contain",
   },
   emissionText: {
     fontSize: 22,
@@ -138,31 +138,31 @@ const styles = StyleSheet.create({
   treeImage: {
     width: 300,
     height: 400,
-    resizeMode: 'contain',
+    resizeMode: "contain",
   },
   touchArea: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     left: 0,
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
   },
   topRightContainer: {
-    position: 'absolute',
+    position: "absolute",
     top: 20,
     right: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   iconContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginLeft: 10,
   },
   icon: {
     width: 30,
     height: 30,
-    resizeMode: 'contain',
+    resizeMode: "contain",
   },
   iconText: {
     fontSize: 16,

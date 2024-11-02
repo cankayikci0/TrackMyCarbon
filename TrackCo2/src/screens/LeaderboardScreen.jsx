@@ -48,7 +48,7 @@ const Leaderboard = () => {
   const renderList = ({ item, index }) => {
     if (index < 3) return null;
     return (
-      <View style={styles.listItem}>
+      <View key={indexw} style={styles.listItem}>
         <Text style={styles.rank}>{index + 1}</Text>
         <Image source={{ uri: item.avatar }} style={styles.avatar} />
         <View style={styles.userInfo}>

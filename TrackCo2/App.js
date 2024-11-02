@@ -7,12 +7,10 @@ import LoginPage from "./src/screens/LoginScreen";
 import RegisterPage from "./src/screens/RegisterScreen";
 import HomeScreen from "./src/screens/HomeScreen";
 import InitialCreationScreen from "./src/screens/InitialCreationScreen";
-import ChallengeScreen from "./src/screens/ChallengeScreen";
+import ChallengesScreen from "./src/screens/ChallengesScreen";
 import LeaderboardScreen from "./src/screens/LeaderboardScreen";
 import ProfileScreen from "./src/screens/ProfileScreen";
-import FactsScreen from "./src/screens/FactsScreen";
-import ProfileScreen from "./src/screens/ProfileScreen";
-import ChallengesScreen from "./src/screens/ChallengesScreen";
+import Facts from "./src/screens/Facts";
 
 const Stack = createNativeStackNavigator();
 
@@ -41,9 +39,9 @@ export default function App() {
           options={{ title: "InitialCreation" }}
         />
         <Stack.Screen
-          name="Challenge"
-          component={ChallengeScreen}
-          options={{ title: "Challenge" }}
+          name="ChallengesScreen"
+          component={ChallengesScreen}
+          options={{ title: "ChallengesScreen" }}
         />
         <Stack.Screen
           name="Leaderboard"
@@ -61,9 +59,9 @@ export default function App() {
           options={{ title: "ProfileScreen" }}
         />
         <Stack.Screen
-          name="ChallengesScreen"
-          component={ChallengesScreen}
-          options={{ title: "ChallengesScreen" }}
+          name="Facts"
+          component={Facts}
+          options={{ title: "Facts" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
