@@ -10,6 +10,9 @@ import InitialCreationScreen from "./src/screens/InitialCreationScreen";
 import ChallengeScreen from "./src/screens/ChallengeScreen";
 import LeaderboardScreen from "./src/screens/LeaderboardScreen";
 import ProfileScreen from "./src/screens/ProfileScreen";
+import FactsScreen from "./src/screens/FactsScreen";
+import ProfileScreen from "./src/screens/ProfileScreen";
+import ChallengesScreen from "./src/screens/ChallengesScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -51,6 +54,16 @@ export default function App() {
           name="Profile"
           component={ProfileScreen}
           options={{ title: "Profile" }}
+        />
+        <Stack.Screen
+          name="ProfileScreen"
+          component={ProfileScreen}
+          options={{ title: "ProfileScreen" }}
+        />
+        <Stack.Screen
+          name="ChallengesScreen"
+          component={ChallengesScreen}
+          options={{ title: "ChallengesScreen" }}
         />
       </Stack.Navigator>
     </NavigationContainer>

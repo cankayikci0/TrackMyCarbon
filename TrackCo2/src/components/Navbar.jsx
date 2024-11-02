@@ -31,14 +31,14 @@ const Navbar = () => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.navbarSub}
-        onPress={() => navigation.navigate("Challenge")}
+        onPress={() => navigation.navigate("ChallengesScreen")}
       >
         <Ionicons name="rocket-outline" size={24} color="white" />
         <Text style={styles.navbarText}>Challenges</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.navbarSub}
-        onPress={() => navigation.navigate("Profile")}
+        onPress={() => navigation.navigate("ProfileScreen")}
       >
         <Ionicons name="person-outline" size={24} color="white" />
         <Text style={styles.navbarText}>Profile</Text>
