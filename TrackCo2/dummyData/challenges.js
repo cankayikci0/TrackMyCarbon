@@ -246,3 +246,5 @@ const challenges = [
       points: 4
     }
   ];
+
+  export default challenges;
