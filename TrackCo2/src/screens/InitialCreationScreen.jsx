@@ -62,7 +62,7 @@ const InitialCreationScreen = () => {
   const [flightType, setFlightType] = useState("");
 
   const handleClick = () => {
-    navigation.navigate("Home");
+    navigation.navigate("HomeScreen");
   };
 
   return (

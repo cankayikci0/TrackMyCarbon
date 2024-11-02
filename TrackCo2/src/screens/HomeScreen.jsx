@@ -4,7 +4,7 @@ import { View, Text, Image, StyleSheet, Dimensions } from "react-native";
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get("window");
 
-const TreeWithLeavesAndAnimation = () => {
+const HomeScreen = () => {
   const [leaves, setLeaves] = useState([]);
 
   const addLeaf = () => {
@@ -171,4 +171,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TreeWithLeavesAndAnimation;
+export default HomeScreen;
