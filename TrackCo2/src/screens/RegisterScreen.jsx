@@ -5,78 +5,105 @@ import {
   TouchableOpacity,
   StyleSheet,
   View,
+  ImageBackground,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
 } from "react-native";
-import { Text, TextInput, Button } from "react-native-paper";
+import { Text, TextInput, Button, Snackbar } from "react-native-paper";
+import { images } from "../constants";
 
 const RegisterScreen = ({ navigation }) => {
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [errorVisible, setErrorVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleRegister = () => {
     if (password !== confirmPassword) {
       setErrorMessage("Passwords do not match.");
-    } else {
-      setErrorMessage("");
-      console.log("Register clicked", { username, email, password });
+      setErrorVisible(true);
+      return;
     }
+    console.log("Register clicked", { email, password, confirmPassword });
+    // Add registration logic here
+
+    navigation.navigate("Home");
   };
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Track My Carbon</Text>
-        <Text style={styles.subtitle}>Create a new account</Text>
-
-        <TextInput
-          label="Username"
-          value={username}
-          onChangeText={(text) => setUsername(text)}
-          mode="outlined"
-          style={styles.input}
-        />
-        <TextInput
-          label="Email"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-          mode="outlined"
-          style={styles.input}
-        />
-        <TextInput
-          label="Password"
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          mode="outlined"
-          secureTextEntry
-          style={styles.input}
-        />
-        <TextInput
-          label="Confirm Password"
-          value={confirmPassword}
-          onChangeText={(text) => setConfirmPassword(text)}
-          mode="outlined"
-          secureTextEntry
-          style={styles.input}
-        />
-
-        {errorMessage ? (
-          <Text style={styles.errorText}>{errorMessage}</Text>
-        ) : null}
-
-        <Button
-          mode="contained"
-          onPress={handleRegister}
-          style={styles.registerButton}
+      <ImageBackground source={images.LoginBackground} style={styles.container}>
+        <KeyboardAvoidingView
+          style={styles.avoidingView}
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          keyboardVerticalOffset={100} // Adjust this value based on your layout
         >
-          Register
-        </Button>
+          <ScrollView contentContainerStyle={styles.scrollContainer}>
+            <View style={styles.content}>
+              <Text style={styles.title}>Track My Carbon</Text>
+              <Text style={styles.subtitle}>Create an account</Text>
+              <TextInput
+                label="Name"
+                value={name}
+                onChangeText={(text) => setName(text)}
+                style={styles.input}
+                theme={{ colors: { primary: "#4caf50" } }}
+              />
+              <TextInput
+                label="Email"
+                value={email}
+                onChangeText={(text) => setEmail(text)}
+                style={styles.input}
+                theme={{ colors: { primary: "#4caf50" } }}
+              />
+              <TextInput
+                label="Password"
+                value={password}
+                onChangeText={(text) => setPassword(text)}
+                secureTextEntry
+                style={styles.input}
+                theme={{ colors: { primary: "#4caf50" } }}
+              />
+              <TextInput
+                label="Confirm Password"
+                value={confirmPassword}
+                onChangeText={(text) => setConfirmPassword(text)}
+                secureTextEntry
+                style={styles.input}
+                theme={{ colors: { primary: "#4caf50" } }}
+              />
 
-        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-          <Text style={styles.loginText}>Already have an account? Log In</Text>
-        </TouchableOpacity>
-      </View>
+              <Button
+                mode="contained"
+                onPress={handleRegister}
+                style={styles.registerButton}
+                color="#4caf50"
+              >
+                Register
+              </Button>
+
+              <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+                <Text style={styles.routerText}>
+                  Already have an account?{" "}
+                  <Text style={styles.loginText}>Log In</Text>
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+
+          <Snackbar
+            visible={errorVisible}
+            onDismiss={() => setErrorVisible(false)}
+            duration={3000}
+            style={styles.snackbar}
+          >
+            {errorMessage}
+          </Snackbar>
+        </KeyboardAvoidingView>
+      </ImageBackground>
     </TouchableWithoutFeedback>
   );
 };
@@ -86,38 +113,58 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: "center",
-    backgroundColor: "#f0f4f7",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  },
+  avoidingView: {
+    flex: 1, // Ensure it takes the full height of the screen
+  },
+  scrollContainer: {
+    flexGrow: 1, // Allow ScrollView to expand
+    justifyContent: "center", // Keep content centered vertically
+    paddingBottom: 20, // Add some padding at the bottom
+  },
+  content: {
+    backgroundColor: "rgba(256,256,256,0.8)",
+    padding: 20,
+    borderRadius: 10, // Optional: Add rounded corners for better aesthetics
   },
   title: {
     fontSize: 28,
     fontWeight: "bold",
     textAlign: "center",
-    color: "#1a1a2e",
+    color: "#5d868e",
     marginBottom: 10,
   },
   subtitle: {
     fontSize: 16,
-    color: "#6c757d",
+    color: "#84baae",
     textAlign: "center",
     marginBottom: 30,
   },
   input: {
     marginBottom: 20,
-  },
-  errorText: {
-    color: "red",
-    textAlign: "center",
-    marginBottom: 10,
+    backgroundColor: "#ffffff",
+    opacity: 0.8,
+    borderRadius: 10,
   },
   registerButton: {
-    backgroundColor: "#1a73e8",
     paddingVertical: 5,
+    backgroundColor: "#4caf50",
+  },
+  routerText: {
+    textAlign: "center",
+    color: "#85af5e",
+    marginTop: 20,
   },
   loginText: {
     textAlign: "center",
-    color: "#1a73e8",
+    color: "#629249",
     marginTop: 20,
     fontWeight: "bold",
+  },
+  snackbar: {
+    backgroundColor: "#d9534f",
   },
 });
 

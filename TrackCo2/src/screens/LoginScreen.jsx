@@ -5,72 +5,63 @@ import {
   TouchableOpacity,
   StyleSheet,
   View,
+  ImageBackground,
 } from "react-native";
 import { Text, TextInput, Button } from "react-native-paper";
+
+import { images } from "../constants";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
+    navigation.navigate("Home");
     console.log("Login clicked", { email, password });
   };
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Track My Carbon</Text>
-        <Text style={styles.subtitle}>Log in to continue</Text>
+      <ImageBackground source={images.LoginBackground} style={styles.container}>
+        <View style={styles.container}>
+          <View style={styles.content}>
+            <Text style={styles.title}>Track My Carbon</Text>
+            <Text style={styles.subtitle}>Log in to continue</Text>
 
-        <TextInput
-          label="Email"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-          mode="outlined"
-          style={styles.input}
-        />
-        <TextInput
-          label="Password"
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          mode="outlined"
-          secureTextEntry
-          style={styles.input}
-        />
+            <TextInput
+              label="Email"
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+              style={styles.input}
+              theme={{ colors: { primary: "#4caf50" } }}
+            />
+            <TextInput
+              label="Password"
+              value={password}
+              onChangeText={(text) => setPassword(text)}
+              secureTextEntry
+              style={styles.input}
+              theme={{ colors: { primary: "#4caf50" } }}
+            />
 
-        <Button
-          mode="contained"
-          onPress={handleLogin}
-          style={styles.loginButton}
-        >
-          Login
-        </Button>
+            <Button
+              mode="contained"
+              onPress={handleLogin}
+              style={styles.loginButton}
+              color="#4caf50"
+            >
+              Login
+            </Button>
 
-        <Text style={styles.orText}>OR</Text>
-
-        <View style={styles.socialContainer}>
-          <Button
-            icon="google"
-            mode="outlined"
-            onPress={() => console.log("Google Login")}
-            style={styles.socialButton}
-          >
-            Google
-          </Button>
-          <Button
-            icon="facebook"
-            mode="outlined"
-            onPress={() => console.log("Facebook Login")}
-            style={styles.socialButton}
-          >
-            Facebook
-          </Button>
+            <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+              <Text style={styles.routerText}>
+                Don't have an account?{" "}
+                <Text style={styles.signupText}>Sign Up</Text>
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
-
-        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-          <Text style={styles.signupText}>Don't have an account? Sign Up</Text>
-        </TouchableOpacity>
-      </View>
+      </ImageBackground>
     </TouchableWithoutFeedback>
   );
 };
@@ -80,45 +71,44 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     justifyContent: "center",
-    backgroundColor: "#f0f4f7",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  },
+  content: {
+    backgroundColor: "rgba(256,256,256,0.8)",
+    padding: 20,
   },
   title: {
     fontSize: 28,
     fontWeight: "bold",
     textAlign: "center",
-    color: "#1a1a2e",
+    color: "#5d868e",
     marginBottom: 10,
   },
   subtitle: {
     fontSize: 16,
-    color: "#6c757d",
+    color: "#84baae",
     textAlign: "center",
     marginBottom: 30,
   },
   input: {
     marginBottom: 20,
+    backgroundColor: "#ffffff",
+    opacity: 0.8,
+    borderRadius: 10,
   },
   loginButton: {
-    backgroundColor: "#1a73e8",
     paddingVertical: 5,
+    backgroundColor: "#4caf50",
   },
-  orText: {
+  routerText: {
     textAlign: "center",
-    marginVertical: 15,
-    color: "#6c757d",
-  },
-  socialContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 20,
-  },
-  socialButton: {
-    flex: 1,
-    marginHorizontal: 5,
+    color: "#85af5e",
+    marginTop: 20,
   },
   signupText: {
     textAlign: "center",
-    color: "#1a73e8",
+    color: "#629249",
     marginTop: 20,
     fontWeight: "bold",
   },
