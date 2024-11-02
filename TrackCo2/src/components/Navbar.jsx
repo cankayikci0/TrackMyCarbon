@@ -17,7 +17,7 @@ const Navbar = () => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.navbarSub}
-        onPress={() => navigation.navigate("Facts")}
+        onPress={() => navigation.navigate("InitialCreation")}
       >
         <Ionicons name="cloud-outline" size={24} color="white" />
         <Text style={styles.navbarText}>Facts</Text>
@@ -31,7 +31,7 @@ const Navbar = () => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.navbarSub}
-        onPress={() => navigation.navigate("Challenges")}
+        onPress={() => navigation.navigate("Challenge")}
       >
         <Ionicons name="rocket-outline" size={24} color="white" />
         <Text style={styles.navbarText}>Challenges</Text>
